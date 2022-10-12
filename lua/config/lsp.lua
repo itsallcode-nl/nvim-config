@@ -113,6 +113,18 @@ else
   vim.notify("pylsp not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
+if utils.executable("vls") then
+  lspconfig.vuels.setup {
+    on_attach = custom_attach,
+    flags = {
+      debounce_text_changes = 200,
+    },
+    capabilities = capabilities,
+  }
+else
+  vim.notify("vls not found!", vim.log.levels.WARN, { title = "Nvim-config"})
+end
+
 -- if utils.executable('pyright') then
 --   lspconfig.pyright.setup{
 --     on_attach = custom_attach,
